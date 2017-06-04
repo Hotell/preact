@@ -286,7 +286,7 @@ export function removeChildren(node) {
 
 
 /** Apply differences in attributes from a VNode to the given DOM Element.
- *	@param {Element} dom		Element with attributes to diff `attrs` against
+ *	@param {HTMLElement} dom		Element with attributes to diff `attrs` against
  *	@param {Object} attrs		The desired end-state key-value attribute pairs
  *	@param {Object} old			Current/previous attributes (from previous VNode or element's prop cache)
  */

@@ -2,8 +2,9 @@ import { extend } from '../util';
 
 
 /** Check if two nodes are equivalent.
- *	@param {Element} node
+ *	@param {HTMLElement|Node} node
  *	@param {VNode} vnode
+ *  @param {boolean} hydrating
  *	@private
  */
 export function isSameNodeType(node, vnode, hydrating) {
@@ -18,7 +19,7 @@ export function isSameNodeType(node, vnode, hydrating) {
 
 
 /** Check if an Element has a given normalized name.
-*	@param {Element} node
+*	@param {HTMLElement|Node} node
 *	@param {String} nodeName
  */
 export function isNamedNode(node, nodeName) {
@@ -37,7 +38,7 @@ export function getNodeProps(vnode) {
 	let props = extend({}, vnode.attributes);
 	props.children = vnode.children;
 
-	let defaultProps = vnode.nodeName.defaultProps;
+	let defaultProps = typeof vnode.nodeName === 'function' ? vnode.nodeName.defaultProps : void 0;
 	if (defaultProps!==undefined) {
 		for (let i in defaultProps) {
 			if (props[i]===undefined) {

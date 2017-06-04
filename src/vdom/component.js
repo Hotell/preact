@@ -53,8 +53,9 @@ export function setComponentProps(component, props, opts, context, mountAll) {
 
 /** Render a Component, triggering necessary lifecycle events and taking High-Order Components into account.
  *	@param {Component} component
- *	@param {Object} [opts]
- *	@param {boolean} [opts.build=false]		If `true`, component will build and store a DOM node if not already associated with one.
+ *	@param {{build?:boolean}} [opts]	If `true`, component will build and store a DOM node if not already associated with one.
+ *	@param {boolean=} mountAll
+ *	@param {boolean=} isChild
  *	@private
  */
 export function renderComponent(component, opts, mountAll, isChild) {
@@ -193,7 +194,7 @@ export function renderComponent(component, opts, mountAll, isChild) {
 
 
 /** Apply the Component referenced by a VNode to the DOM.
- *	@param {Element} dom	The DOM node to mutate
+ *	@param {HTMLElement} dom	The DOM node to mutate
  *	@param {VNode} vnode	A Component-referencing VNode
  *	@returns {Element} dom	The created/mutated element
  *	@private
